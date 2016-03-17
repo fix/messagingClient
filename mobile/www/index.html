@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Messaging Lisk</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/app.css">
+    <script src="js/jquery.js"></script>
+</head>
+<body>
+  <div class="mainapp" id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a id="about" href="#">
+                        Messaging Lisk
+                    </a>
+                </li>
+                <li>
+                    <a id="account" href="#">Account</a>
+                </li>
+                <li>
+                    <a id="compose" href="#">Compose</a>
+                </li>
+                <li>
+                    <a id="messages" href="#">Messages</a>
+                </li>
+                <li>
+                    <a id="about" href="#">About</a>
+                </li>
+                <li>
+                    <a id="contactme" href="#">Contact</a>
+                </li>
+                <li>
+                    <a id="logout" href="#">Logout</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+          <nav class="navbar navbar-default">
+            <div class="container">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <img src="images/icon.png">
+                <a class="navbar-brand" href="#menu-toggle" class="btn btn-default" id="menu-toggle">Menu</a>
+              </div>
+            </div><!-- /.container-fluid -->
+          </nav>
+
+            <div class="container">
+              <div  class="row">
+                <div class="page accountpage col-xs-12 col-sm-6">
+                  <div class="col-sm-12">
+                    <div class="panel widget widget-brown">
+                      <div class="lisk-icon"></div>
+                      <div class="panel-body">
+                        <div class="wg-label">
+                          <i class="glyphicon glyphicon-user"></i> <span id="profilename"></span>
+                        </div>
+                        <div class="wg-data">
+                          <span id="balance" class="strong "></span>&nbsp;LISK
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="panel  widget widget-brown">
+                      <div class="contacts-icon"></div>
+                      <div class="panel-body">
+                        <div class="wg-label ">
+                          Followers
+                        </div>
+                        <div id="followers" class="wg-data">
+                          <h1 class="strong "></h1><!-- <span ng-if="false" class="wg-legend new-contacts"><span>12 this week</span> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="panel  widget widget-brown">
+                      <div class="contacts-icon"></div>
+                      <div class="panel-body">
+                        <div class="wg-label ">
+                          Following
+                        </div>
+                        <div id="followings" class="wg-data">
+                          <h1 class="strong "></h1><!-- <span ng-if="false" class="wg-legend new-contacts"><span>12 this week</span> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="page aboutpage activepage col-lg-12" id="about">
+                  <h1>Messaging Lisk</h1>
+                  <p>This is a demo to connect to a LISK dapp to show how easy it is developped</p>
+                </div>
+                <div class="page contactmepage col-lg-12" id="about">
+                  <h1>I am FX Thoorens from France, know as fixcrypt on forums</h1>
+                  <p>Please visit <a target="_blank" href="http://sigmeus.fr">my company</a> or send me an email
+                  at <a href="mailto:fx.thoorens@gmail.com">fx.thoorens@gmail.com</a></p>
+                </div>
+                <div class="page composepage col-xs-12 col-sm-6">
+                    <h1>Send a message<br><small>Choose a recipient and send him a message</small></h1>
+                    <form class="panel-body" id="mainform" name="public">
+                      <div class="form-group">
+                        <input type="text" class="form-control" id="account" placeholder="Recipient Account Id">
+                      </div>
+                      <div class="form-group">
+                        <textarea rows="3" cols="50" type="text" class="form-control" id="entry" maxlength="160" placeholder="Your message (max 160 characters)"></textarea>
+                      </div>
+                      <button type="button" id="submit" class="col-xs-12 col-sm-12 col-md-12 btn btn-default">Submit</button>
+                    </form>
+
+                </div>
+
+
+                <div class="page messagespage col-sm-12 col-xs-12">
+                    <h2 class="">
+                      Latest Messages
+                    </h2>
+                    <div id="entryOverview">
+
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+  <div class="container-app en loginwindow">
+    <div class="pass-banner"></div>
+    <div class="pass-bottom">
+        <div class="pass-window">
+            <div class="pass-window-icon">
+            </div>
+            <form id="loginwindow" name="login" class="clearfix pass-window-form ng-valid ng-dirty" >
+              <div class="input-field">
+                  <input id="passphrase" type="password">
+                  <label for="password" class="active"><span>Your Passphrase</span></label>
+              </div>
+              <div class="input-field">
+                <input id="peer" type="text" value="http://192.168.1.98:7000">
+                <label for="peer" class="active"><span>Node URL</span></label>
+              </div>
+              <div class="buttons-panel pull-right">
+                  <button type="submit" id="submitlogin" class="btn btn-blue waves-effect waves-light">Login</button>
+              </div>
+            </form>
+        </div>
+
+        <div class="pass-footer clearfix">Lisk © 2016. All Rights Reserved.</div>
+    </div>
+      <!-- <div class="pass-banner"></div>
+      <div class="pass-bottom">
+          <div class="pass-window">
+              <div class="pass-window-icon">
+              </div>
+              <form id="loginwindow" name="login" class="clearfix pass-window-form ng-valid ng-dirty" >
+                <div class="input-field">
+                    <input id="passphrase" type="password" ng-model="pass" ng-trim="false" autofocus="" class="ng-valid ng-animate ng-pristine-remove ng-pristine-remove-active ng-dirty" style="">
+                    <label for="password" class="active"><translate><span>Your Passphrase</span></translate></label>
+                    <span class="pass-error  ng-hide" ng-show="errorMessage"></span>
+                </div>
+                <div class="input-field">
+                    <input id="peer" type="url" ng-model="pass" ng-trim="false" autofocus="" class="ng-valid ng-animate ng-pristine-remove ng-pristine-remove-active ng-dirty" style="">
+                    <label for="peer" class="active"><translate><span>Node URL</span></translate></label>
+                    <span class="pass-error  ng-hide" ng-show="errorMessage"></span>
+                </div>
+                <div class="buttons-panel pull-right">
+                    <a id="submitlogin" class="btn btn-blue waves-effect waves-light">Login</a>
+                </div>
+              </form>
+          </div>
+
+          <div class="pass-footer clearfix">Lisk © 2016. All Rights Reserved.</div>
+      </div> -->
+
+  </div>
+
+  <script type="text/javascript">
+
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+
+    $(".sidebar-nav a").click(function(e) {
+        e.preventDefault();
+        var id=$(e.target).attr('id');
+        $(".activepage").toggleClass("activepage");
+        $(".page."+id+"page").toggleClass("activepage");
+        $("#wrapper").toggleClass("toggled");
+    });
+
+
+    var peer = "http://localhost:7000";
+    var dappId = "13799198158260016082";
+
+    function reloadPage() {
+     window.location.reload();
+    }
+
+    function checkCurrentAccount(){
+      if(window.currentAccount){
+        $(".mainapp").show();
+        $(".loginwindow").hide();
+      }
+
+      else{
+        $(".mainapp").hide();
+        $(".loginwindow").show();
+      }
+    }
+
+    $("#logout").click(function(){
+      reloadPage();
+    });
+
+    $("#loginwindow").submit(function () {
+      peer=document.login.peer.value;
+
+      jQuery.ajax({
+          url: peer+'/api/accounts/open',
+          type: 'POST',
+          dataType: 'json',
+          data: { "secret":document.login.passphrase.value }
+      }).done(function (resp) {
+        console.log(resp);
+        if(resp && resp.success){
+          window.currentAccount=resp.account;
+          window.currentPassphrase=document.login.passphrase.value
+          $(".mainapp").show();
+          $(".loginwindow").hide();
+          $("#profilename").html(window.currentAccount.address);
+          $("#balance").html(window.currentAccount.balance/100000000);
+          getContacts();
+          getEntries(window.currentAccount.address);
+        }
+        else{
+          $(".loginwindow").append("<div class='popupmessage col-sm-12 alert alert-danger'>Unknown account, please put another passphrase</div>");
+        }
+      });
+      return false;
+    });
+
+    $("#submit").click(function () {
+        if (document.public.account.value == "")
+        {
+          $("#mainform").append("<div class='popupmessage col-sm-12 alert alert-danger'>Please enter a recipient!</div>");
+
+        }
+        if (document.public.entry.value == "")
+        {
+            $("#mainform").append("<div class='popupmessage col-sm-12 alert alert-danger'>Your message is empty!</div>");
+            return;
+        }
+
+        jQuery.ajax({
+            url: peer+'/api/dapps/' + dappId + '/api/messages/add',
+            type: 'PUT',
+            dataType: 'json',
+            data: { "recipientId": document.public.account.value, "message": document.public.entry.value, "secret": window.currentPassphrase }
+        }).done(function (resp) {
+            document.public.entry.value="";
+            $("#mainform").append("<div class='popupmessage col-sm-12 alert alert-success'>Your message has been sent, it will appears in 10s or so</div>");
+        });
+
+        return false;
+    });
+
+    function getContacts(){
+      jQuery.get(peer+"/api/contacts/?publicKey=" + window.currentAccount.publicKey, function (data) {
+          if (data.error == "DAPPS.DAPPS_NOT_READY") {
+              alert("Dapp offline! The master node which computes your instance of this dapp is offline. Please reload the window!");
+          }
+          if(data){
+            console.log(data)
+            var numberOfFollowers = data.followers.length;
+            var numberOfFollowing = data.following.length;
+            $("#followers h1").html(numberOfFollowers);
+            $("#followings h1").html(numberOfFollowing);
+          }
+      });
+
+    }
+
+    function getEntries(address) {
+        $(".popupmessage").remove();
+        jQuery.get(peer+"/api/dapps/" + dappId + "/api/messages/list?recipientId=" +address, function (data) {
+            $("#entryOverview").html('');
+            if (data.error == "DAPPS.DAPPS_NOT_READY") {
+                alert("Dapp offline! The master node which computes your instance of this dapp is offline. Please reload the window!");
+            }
+            if(data.response){
+              jQuery.each(data.response.messages, function (key, value) {
+                  var numberOfEntries = data.response.messages.length - 20;
+                  if (key < numberOfEntries) {
+                      return;
+                  }
+                  key = key + 1;
+                  $("#entryOverview")
+                          .prepend("<div class='widget widget-brown panel alert'>#" + key + " by " + value.senderId + "<br /><strong>" + value.asset.message.replace(/[<>]/g,'') + "</strong></div>");
+              });
+            } else {
+                $("#entryOverview").append("<h2>No message to display yet!</h2>")
+            }
+        });
+    }
+    checkCurrentAccount();
+    setInterval(function () {
+      if(window.currentAccount){
+        getEntries(window.currentAccount.address);
+      }
+    }, 10000);
+  </script>
+</body>
+</html>
