@@ -21,7 +21,7 @@ cordova add platform android
 cordova run
 ```
 
-![Android App](https://www.youtube.com/watch?v=oSR85IyBHxk)
+[![Android App](https://img.youtube.com/vi/oSR85IyBHxk/0.jpg)](https://www.youtube.com/watch?v=oSR85IyBHxk)
 
 #### License
 The MIT License (MIT)
