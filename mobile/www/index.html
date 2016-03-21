@@ -7,8 +7,10 @@
 
     <title>Messaging Lisk</title>
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/toastr.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/app.css">
     <script src="js/jquery.js"></script>
+    <script src="js/toastr.min.js"></script>
 </head>
 <body>
   <div class="mainapp" id="wrapper">
@@ -203,7 +205,7 @@
 
 
     var peer = "http://localhost:7000";
-    var dappId = "13799198158260016082";
+    var dappId = "105601020317470892";
 
     function reloadPage() {
      window.location.reload();
@@ -234,8 +236,14 @@
           dataType: 'json',
           data: { "secret":document.login.passphrase.value }
       }).done(function (resp) {
-        console.log(resp);
         if(resp && resp.success){
+          //TODO to be sure the dapp account is live....
+          jQuery.ajax({
+              url: peer+'/api/dapps/' + dappId + '/api/openAccount',
+              type: 'POST',
+              dataType: 'json',
+              data: { "secret":document.login.passphrase.value }
+          });
           window.currentAccount=resp.account;
           window.currentPassphrase=document.login.passphrase.value
           $(".mainapp").show();
@@ -246,7 +254,7 @@
           getEntries(window.currentAccount.address);
         }
         else{
-          $(".loginwindow").append("<div class='popupmessage col-sm-12 alert alert-danger'>Unknown account, please put another passphrase</div>");
+          toastr.error("Unknown account, please put another passphrase");
         }
       });
       return false;
@@ -255,12 +263,12 @@
     $("#submit").click(function () {
         if (document.public.account.value == "")
         {
-          $("#mainform").append("<div class='popupmessage col-sm-12 alert alert-danger'>Please enter a recipient!</div>");
+          toastr.error("Please enter a recipient!");
 
         }
         if (document.public.entry.value == "")
         {
-            $("#mainform").append("<div class='popupmessage col-sm-12 alert alert-danger'>Your message is empty!</div>");
+            toastr.error("Your message is empty!");
             return;
         }
 
@@ -270,8 +278,13 @@
             dataType: 'json',
             data: { "recipientId": document.public.account.value, "message": document.public.entry.value, "secret": window.currentPassphrase }
         }).done(function (resp) {
-            document.public.entry.value="";
-            $("#mainform").append("<div class='popupmessage col-sm-12 alert alert-success'>Your message has been sent, it will appears in 10s or so</div>");
+            if(resp.success){
+              document.public.entry.value="";
+              toastr.success("Your message has been sent, it will appears in 10s or so");
+            }
+            else{
+              toastr.error("The message could not be sent, please check the recipient");
+            }
         });
 
         return false;
